@@ -9,9 +9,10 @@ import 'package:green_wallet/screens/login_success/login_success_screen.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import '../../../constants.dart';
 
-FirebaseApp secondaryApp = Firebase.app('SecondaryApp');
-FirebaseAuth auth = FirebaseAuth.instanceFor(app: secondaryApp);
-final FirebaseFirestore firestore = FirebaseFirestore.instance;
+//FirebaseApp secondaryApp = Firebase.app('SecondaryApp');
+//FirebaseAuth auth = FirebaseAuth.instanceFor(app: secondaryApp);
+//FirebaseAuth auth = FirebaseAuth.instance;
+//final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 class OtpForm extends StatefulWidget {
   const OtpForm({Key key, @required this.phoneNumber, @required this.password})
@@ -37,9 +38,14 @@ class _OtpFormState extends State<OtpForm> {
   var _text5 = TextEditingController();
   var _text6 = TextEditingController();
   var verificationCode = '';
+
+  //await Firebase.initializeApp();
+  //FirebaseAuth auth = FirebaseAuth.instanceFor(app: secondaryApp);
+//FirebaseAuth auth = FirebaseAuth.instance;
+  //final FirebaseFirestore firestore = FirebaseFirestore.instance;
   //var smsCode = '';
 
-  //_OtpFormState();
+  //_OtpFormState()
 
   /* Future<void> phoneCredential(
     BuildContext context,
@@ -68,30 +74,34 @@ class _OtpFormState extends State<OtpForm> {
   FocusNode pin5FocusNode;
   FocusNode pin6FocusNode;
 
-  void authentication() async {
-    print("*********1*********");
+  void authentication(arguments) async {
     //final arguments = ModalRoute.of(context).settings.arguments as Map;
-    print("*********2*********");
+
+    print("****************** Je suis dans authentification *****************");
+
+    //auth = FirebaseAuth.instanceFor(app: secondaryApp);
+    await Firebase.initializeApp();
     FirebaseAuth auth = FirebaseAuth.instance;
-    print("*********3*********");
-    //print("****************** ${arguments["phoneNumber"]} *****************");
+
     await auth.verifyPhoneNumber(
-      //phoneNumber: '+237${arguments["phoneNumber"]}',
-      phoneNumber: '+237656646406',
+      phoneNumber: '+237${arguments["phoneNumber"]}',
+      //phoneNumber: '+237699439489',
       verificationCompleted: (PhoneAuthCredential credential) async {
-        debugPrint('Gideon test 3');
+        print(
+            "****************** Je suis dans verificationCompleted *****************");
+        //await auth.signInWithCredential(credential);
+        print("********A**********");
         //auto code complete (not manually)
-        auth.signInWithCredential(credential).then((user) async => {
-              if (user != null)
-                {
+        /* await auth.signInWithCredential(credential).then((user) async => {
+                  // if (user != null) {
                   //store registration details in firestore database
                   await firestore
                       .collection('users')
                       .doc(auth.currentUser.uid)
                       .set({
                     //'name': nameController.text.trim(),
-                    //'cellnumber': arguments["phoneNumber"].text.trim()
-                    'cellnumber': '+237656646406'
+                    'cellnumber': arguments["phoneNumber"].text.trim()
+                    //'cellnumber': '+237656646406'
                   }, SetOptions(merge: true)).then((value) => {
                             //then move to authorised area
                             // setState(() {
@@ -115,35 +125,52 @@ class _OtpFormState extends State<OtpForm> {
                                 'Error saving user to db.' + onError.toString())
                           }) */
                 }
-            });
-        debugPrint('Gideon test 4');
+            //}
+            ); */
+
         // Sign the user in (or link) with the auto-generated credential
-        //await auth.signInWithCredential(credential);
+        /* await auth.signInWithCredential(credential);
+        print("********A**********"); */
       },
       verificationFailed: (FirebaseAuthException e) {
         //print(e.toString());
         if (e.code == 'invalid-phone-number') {
           print('The provided phone number is not valid.');
         }
+        print("********B**********");
       },
-      codeSent: (String verificationId, int resendToken) async {
-        // Update the UI - wait for the user to enter the SMS code
-        String smsCode = _text1.text.toString() +
-            _text2.text.toString() +
-            _text3.text.toString() +
-            _text4.text.toString() +
-            _text5.text.toString() +
-            _text6.text.toString();
-        print("****************** $smsCode *****************");
-        print(
-            "****************** ${_text1.text.toString() + _text2.text.toString() + _text3.text.toString() + _text4.text.toString() + _text5.text.toString() + _text6.text.toString()} *****************");
 
+      codeSent: (String verificationId, int resendToken) async {
+        verificationCode = verificationId;
+        print("******************Je suis dans codeSent *****************");
+        /* void sendCode() async {
+          // Update the UI - wait for the user to enter the SMS code
+          verificationCode = verificationId;
+          print("******************test code sent *****************");
+          String smsCode = smscode;
+          print("******************Je suis dans codeSent *****************");
+          print("******************test $verificationCode *****************");
+          print("******************test $smscode *****************");
+          // Create a PhoneAuthCredential with the code
+          PhoneAuthCredential credential = PhoneAuthProvider.credential(
+              verificationId: verificationCode, smsCode: smsCode);
+
+          // Sign the user in (or link) with the credential
+          await auth.signInWithCredential(credential);
+        } */
+        /*   // Update the UI - wait for the user to enter the SMS code
+        verificationCode = verificationId;
+        print("******************test code sent *****************");
+        String smsCode = smscode;
+        print("******************Je suis dans codeSent *****************");
+        print("******************test $verificationCode *****************");
+        print("******************test $smscode *****************");
         // Create a PhoneAuthCredential with the code
         PhoneAuthCredential credential = PhoneAuthProvider.credential(
             verificationId: verificationCode, smsCode: smsCode);
 
         // Sign the user in (or link) with the credential
-        await auth.signInWithCredential(credential);
+        await auth.signInWithCredential(credential); */
       },
       timeout: const Duration(seconds: 60),
       codeAutoRetrievalTimeout: (String verificationId) {
@@ -152,17 +179,35 @@ class _OtpFormState extends State<OtpForm> {
     );
   }
 
+  void sendCode(smscode) async {
+    // Update the UI - wait for the user to enter the SMS code
+    print("******************test code sent *****************");
+    print("******************Je suis dans sendCode *****************");
+    print("******************test $verificationCode *****************");
+    print("******************test $smscode *****************");
+
+    print("******************Avant PhoneAuthCredential *****************");
+
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    // Create a PhoneAuthCredential with the code
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: verificationCode, smsCode: smscode);
+
+    print("******************Avant signInWithCredential *****************");
+    // Sign the user in (or link) with the credential
+
+    await auth.signInWithCredential(credential);
+    print("******************test signInWithCredential *****************");
+  }
+
   @override
   void initState() {
     print('****************Test dinitiolisation****************');
     super.initState();
     print("********4**********");
-    authentication();
+    //authentication();
     print("********5**********");
-    Firebase.initializeApp().whenComplete(() {
-      print("*****completed*****");
-      setState(() {});
-    });
     print("Bonjour odc");
     pin2FocusNode = FocusNode();
     pin3FocusNode = FocusNode();
@@ -190,7 +235,16 @@ class _OtpFormState extends State<OtpForm> {
   @override
   Widget build(BuildContext context) {
     print("Test1");
+
     final arguments = ModalRoute.of(context).settings.arguments as Map;
+    final mmscode = _text1.text.toString() +
+        _text2.text.toString() +
+        _text3.text.toString() +
+        _text4.text.toString() +
+        _text5.text.toString() +
+        _text6.text.toString();
+    print("******mmscode que j'ai entré 1*********$mmscode ************");
+    authentication(arguments);
     //authentication(arguments);
     //String phoneNum = arguments["phoneNumber"];
     return Form(
@@ -278,7 +332,11 @@ class _OtpFormState extends State<OtpForm> {
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    print(
+                        "******smscode que j'ai entré*********$mmscode ************");
+                    //sendCode();
+                  },
                 ),
               ),
               //verificationId = null;
@@ -288,7 +346,7 @@ class _OtpFormState extends State<OtpForm> {
           DefaultButton(
             //text: "Continuer",
             text: "Continuer ${arguments["phoneNumber"]}",
-            press: () async {
+            /* press: () async {
               if (_formKeyOTP.currentState.validate()) {
                 // If the form is valid, we want to show a loading Snackbar
                 // If the form is valid, we want to do firebase signup...
@@ -303,6 +361,12 @@ class _OtpFormState extends State<OtpForm> {
                               _text5.text.toString() +
                               _text6.text.toString()))
                       .then((user) async => {
+                            sendCode(_text1.text.toString() +
+                                _text2.text.toString() +
+                                _text3.text.toString() +
+                                _text4.text.toString() +
+                                _text5.text.toString() +
+                                _text6.text.toString()),
                             //sign in was success
                             if (user != null)
                               {
@@ -343,20 +407,28 @@ class _OtpFormState extends State<OtpForm> {
                       .catchError((error) => {});
                 } catch (e) {}
               }
-            },
-
-            /*  {
-              //if (_formKey.currentState.validate()) {
-              //  _formKey.currentState.save();
-              // if all are valid then go to success screen
-              Navigator.pushNamed(context, LoginSuccessScreen.routeName);
-              //}
-              /*  var smsCode =
-                  "${_text1.text.toString()}${_text2.text.toString()}${_text3.text.toString()}${_text4.text.toString()}${_text5.text.toString()}${_text6.text.toString()}"; */
-              var smsCode = _text1;
-              print(smsCode);
-              authentication(arguments);
             }, */
+
+            press: () async {
+              /* sendCode(_text1.text.toString() +
+                  _text2.text.toString() +
+                  _text3.text.toString() +
+                  _text4.text.toString() +
+                  _text5.text.toString() +
+                  _text6.text.toString()); */
+              if (_formKeyOTP.currentState.validate()) {
+                sendCode(_text1.text.toString() +
+                    _text2.text.toString() +
+                    _text3.text.toString() +
+                    _text4.text.toString() +
+                    _text5.text.toString() +
+                    _text6.text.toString());
+                //  _formKeyOTP.currentState.save();
+                // if all are valid then go to success screen
+                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+              }
+              //authentication(arguments);
+            },
           )
         ],
       ),
