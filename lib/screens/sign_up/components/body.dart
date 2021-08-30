@@ -13,19 +13,19 @@ class Body extends StatelessWidget {
         width: double.infinity,
         child: Padding(
           padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(10)),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.04), // 4%
+                SizedBox(height: SizeConfig.screenHeight * 0.01), // 1%
                 Text("INSCRIPTION", style: headingStyle),
                 Text(
                   "Entrez vos paramètres et inscrivez-vous \nsur GREEN WALLET",
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
+                SizedBox(height: SizeConfig.screenHeight * 0.06),
                 SignUpForm(),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
+                SizedBox(height: SizeConfig.screenHeight * 0.06),
                 /* Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -43,12 +43,13 @@ class Body extends StatelessWidget {
                     ),
                   ],
                 ), */
-                SizedBox(height: getProportionateScreenHeight(20)),
+                SizedBox(height: getProportionateScreenHeight(10)),
                 Text(
                   'En appuyant sur continuer, vous acceptez nos \ntermes et conditions d\'utilisation',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.caption,
-                )
+                ),
+                SizedBox(height: getProportionateScreenHeight(40)),
               ],
             ),
           ),

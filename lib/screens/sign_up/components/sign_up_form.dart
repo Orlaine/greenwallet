@@ -12,10 +12,8 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 final _phoneController = TextEditingController();
+final _nameController = TextEditingController();
 final _codeController = TextEditingController();
-
-final FirebaseAuth _auth = FirebaseAuth.instance;
-final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
 class SignUpForm extends StatefulWidget {
   @override
@@ -26,6 +24,7 @@ class _SignUpFormState extends State<SignUpForm> {
   final _formKey = GlobalKey<FormState>();
   String phoneNumber;
   String password;
+  String name;
   String confirm_password;
   bool remember = false;
   final List<String> errors = [];
@@ -52,6 +51,8 @@ class _SignUpFormState extends State<SignUpForm> {
         children: [
           buildPhoneNumberFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
+          buildNameFormField(),
+          SizedBox(height: getProportionateScreenHeight(30)),
           buildPasswordFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildConformPassFormField(),
@@ -64,7 +65,8 @@ class _SignUpFormState extends State<SignUpForm> {
                   _formKey.currentState.save();
                   Navigator.pushNamed(context, OtpScreen.routeName, arguments: {
                     'phoneNumber': phoneNumber,
-                    'password': password
+                    'password': password,
+                    'name': name
                   });
                 }
               }),
@@ -166,66 +168,19 @@ class _SignUpFormState extends State<SignUpForm> {
     );
   }
 
-/*   Future signUp() async {
-/*   setState(() {
-    isLoading = true;
-  }); */
-
-    var _phoneNumber = '+237' + _phoneController.text.trim();
-    var verifyPhonenumber = _auth.verifyPhoneNumber(
-        phoneNumber: _phoneNumber,
-        verificationCompleted: (phoneAuthCredential) {
-          _auth.signInWithCredential(phoneAuthCredential).then((user) async => {
-                if (user != null)
-                  {
-                    //logged in
-                    await _firestore
-                        .collection('users')
-                        .doc(_auth.currentUser.uid)
-                        .set({
-                          //'name': _nameController.text.trim(),
-                          'code': _codeController.text.trim(),
-                          'cellnumber': _phoneController.text.trim()
-                        }, SetOptions(merge: true))
-                        .then((value) => {
-                              setState(() {
-                                /* isLoading = false;
-                  isRegister = false;
-                  isOTPScreen = false; */
-
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomeScreen()),
-                                    (route) => false);
-                              })
-                            })
-                        .catchError((onError) => {
-                              debugPrint(
-                                  'Error saving user' + onError.toString())
-                            })
-                  }
-              });
-        },
-        verificationFailed: (FirebaseAuthException error) {
-          debugPrint('Error logging in: ' + error.message);
-          /*setState(() {
-            isLoading = false;
-          });*/
-        },
-        codeSent: (verificationId, [foreResendingToken]) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => OtpScreen()));
-          /* setState(() {
-            //isLoading = false;
-            verificationCode = verificationId;
-          }); */
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-          // setState(() {
-          //   isLoading = false;
-          //   verificationCode = verificationId;
-          // });
-        });
-  } */
+  TextFormField buildNameFormField() {
+    return TextFormField(
+      keyboardType: TextInputType.text,
+      onSaved: (newValue) => name = newValue,
+      decoration: InputDecoration(
+        labelText: "Nom d'utilisateur",
+        hintText: "Nom d'utilisateur",
+        // If  you are using latest version of flutter then lable text and hint text shown like this
+        // if you r using flutter less then 1.20.* then maybe this is not working properly
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
+      ),
+      controller: _nameController,
+    );
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_wallet/screens/home/home_screen.dart';
 import 'package:green_wallet/screens/splash/components/background.dart';
 import 'package:green_wallet/components/rounded_button.dart';
 import 'package:green_wallet/constants.dart';
@@ -17,7 +18,7 @@ class Body extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "GREEN_WALLET",
+              "GREEN WALLET",
               style: TextStyle(
                 fontSize: getProportionateScreenWidth(26),
                 color: kPrimaryColor,
@@ -26,7 +27,8 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: size.height * 0.05),
             Image.asset(
-              "assets/images/wallet2.png",
+              /* "assets/images/wallet2.png", */
+              "assets/images/wallets.png",
               height: size.height * 0.45,
               /* height: getProportionateScreenHeight(265),
               width: getProportionateScreenWidth(235), */
@@ -35,7 +37,8 @@ class Body extends StatelessWidget {
             RoundedButton(
               text: "CONNEXION",
               press: () {
-                Navigator.pushNamed(context, SignInScreen.routeName);
+                //Navigator.pushNamed(context, SignInScreen.routeName);
+                Navigator.pushNamed(context, HomeScreen.routeName);
               },
             ),
             RoundedButton(

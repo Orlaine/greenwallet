@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:green_wallet/size_config.dart';
 
-const kPrimaryColor = Color(0xFF43ff7c);
+//const kPrimaryColor = Color(0xFF43ff7c);
+// Couleur primaire: 56ec83
+const kPrimaryColor = Color(0xFF56ec83);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,

@@ -32,6 +32,7 @@ class Body extends StatelessWidget {
               OtpForm(
                 phoneNumber: '',
                 password: '',
+                name: '',
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.1),
               GestureDetector(
@@ -57,7 +58,7 @@ class Body extends StatelessWidget {
         Text("Ce code expire dans "),
         TweenAnimationBuilder(
           tween: Tween(begin: 30.0, end: 0.0),
-          duration: Duration(seconds: 30),
+          duration: Duration(seconds: 60),
           builder: (_, value, child) => Text(
             "00:${value.toInt()}",
             style: TextStyle(color: kPrimaryColor),

@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "8583048403",
-    "firebase_url": "https://greentest-e78ef-default-rtdb.firebaseio.com",
-    "project_id": "greentest-e78ef",
-    "storage_bucket": "greentest-e78ef.appspot.com"
+    "project_number": "610485209360",
+    "firebase_url": "https://mygreen-1d50a-default-rtdb.firebaseio.com",
+    "project_id": "mygreen-1d50a",
+    "storage_bucket": "mygreen-1d50a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:8583048403:android:be099bc601396f655ff826",
+        "mobilesdk_app_id": "1:610485209360:android:d191cdc4b92e258928bd95",
         "android_client_info": {
-          "package_name": "com.example.green_wallet"
+          "package_name": "com.example.green_wall"
         }
       },
       "oauth_client": [
         {
-          "client_id": "8583048403-aqh4srj8almhsis1hbhcakq2eki7g797.apps.googleusercontent.com",
+          "client_id": "610485209360-f8b0dece1fin3kiune64matmo884hnfi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.green_wall",
+            "certificate_hash": "dda0e0bacf17e617683f1218b94b6c527a6a5295"
+          }
+        },
+        {
+          "client_id": "610485209360-k5o61hlkv2l3g999e3ps0hnjdu20395n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCTAjkURSnYLgC8qCsEKm7-DimmTp3VSb8"
+          "current_key": "AIzaSyAKVrrgvKKLrU6FmT2OvH0GILtQ0voHqLw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "8583048403-aqh4srj8almhsis1hbhcakq2eki7g797.apps.googleusercontent.com",
+              "client_id": "610485209360-k5o61hlkv2l3g999e3ps0hnjdu20395n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
