@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_wallet/components/bottom_bar.dart';
 import 'package:green_wallet/components/coustom_bottom_nav_bar.dart';
 import 'package:green_wallet/enums.dart';
 
@@ -14,6 +15,7 @@ class ProfileScreen extends StatelessWidget {
       ),
       body: Body(),
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.profile),
+      //bottomNavigationBar: BottomBar(selectedMenu: MenuState.profile),
     );
   }
 }

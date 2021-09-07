@@ -1,33 +1,32 @@
-/* import 'package:flutter/material.dart';
-import "package:visibility_detector/visibility_detector.dart";
-import "package:flutter_swiper/flutter_swiper.dart";
+import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:green_wallet/components/bottom_bar.dart';
+import 'package:green_wallet/components/coustom_bottom_nav_bar.dart';
+//import 'package:googlenews/Data/data.dart';
+//import 'package:googlenews/Widgets/ForYouContainer.dart';
+//import 'package:googlenews/Widgets/TrendingContainer.dart';
+import 'package:green_wallet/models/Actuality.dart';
+import 'package:green_wallet/screens/details/components/custom_app_bar.dart';
+import 'package:green_wallet/screens/details/details_screen.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import '../../../enums.dart';
+import 'actu_container.dart';
+import 'container.dart';
+//import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class HomeActuScreen extends StatefulWidget {
+  static String routeName = "/homeactu";
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(title: 'flutterTabs', home: tabs());
-  }
+  _HomeActuScreenState createState() => _HomeActuScreenState();
 }
 
-class tabs extends StatefulWidget {
-  @override
-  _tabsState createState() => _tabsState();
-}
-
-class _tabsState extends State<tabs> with SingleTickerProviderStateMixin {
-  List list_name = ["Most Selling", "Burger", "Pizza", "Chikcen", "Eggs"];
-
+class _HomeActuScreenState extends State<HomeActuScreen>
+    with SingleTickerProviderStateMixin {
+  List list_name = ["Most Selling", "HamBurger", "Pizza", "Chikcen", "Eggs"];
   SwiperController _scrollController = new SwiperController();
-
   TabController tabController;
-
   int currentindex2 = 0; // for swiper index initial
-
   int selectedIndex = 0; // for tab
 
   @override
@@ -48,8 +47,33 @@ class _tabsState extends State<tabs> with SingleTickerProviderStateMixin {
     });
   }
 
+  Widget buildForYouContainers() {
+    List<Widget> actuContainers = [];
+    for (Actuality article in demoActuality) {
+      actuContainers.add(ActuContainer(
+        article: article,
+      ));
+    }
+    return Column(
+      children: actuContainers,
+    );
+  }
+
+  Widget buildAstuces() {
+    List<Widget> actuContainers = [];
+    for (Actuality article in demoActuality) {
+      actuContainers.add(ActuContainer(
+        article: article,
+      ));
+    }
+    return Column(
+      children: actuContainers,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    //final ProductDetailsArguments agrs = ModalRoute.of(context).settings.arguments;
     return DefaultTabController(
       length: list_name.length,
       child: Scaffold(
@@ -57,8 +81,8 @@ class _tabsState extends State<tabs> with SingleTickerProviderStateMixin {
           child: Column(
             children: [
               Container(
-                  padding: EdgeInsets.only(top: 50),
-                  height: 120,
+                  padding: EdgeInsets.only(top: 40),
+                  height: 70,
                   child: DefaultTabController(
                     length: list_name.length,
                     child: Container(
@@ -151,9 +175,11 @@ class _tabsState extends State<tabs> with SingleTickerProviderStateMixin {
       ),
     );
   }
-} */
+}
 
-import 'package:flutter/material.dart';
+
+/* import 'package:flutter/material.dart';
+import 'package:green_wallet/components/bottom_bar.dart';
 import 'package:green_wallet/components/coustom_bottom_nav_bar.dart';
 //import 'package:googlenews/Data/data.dart';
 //import 'package:googlenews/Widgets/ForYouContainer.dart';
@@ -291,6 +317,8 @@ class _HomeActuScreenState extends State<HomeActuScreen> {
       //appBar: CustomAppBar(rating: agrs.product.rating),
       //On ajoute la barre de navigation basse à l'écran
       bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.homeactu),
+      //bottomNavigationBar: BottomBar(selectedMenu: MenuState.homeactu),
     );
   }
 }
+ */

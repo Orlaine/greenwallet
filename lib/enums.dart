@@ -6,5 +6,6 @@ enum MenuState {
   bank,
   homeactu,
   homeservices,
-  gmap
+  gmap,
+  home_ticket
 }

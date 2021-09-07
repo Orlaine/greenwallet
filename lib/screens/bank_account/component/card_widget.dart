@@ -172,10 +172,11 @@ class CardWidget extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   //ColorConstants.cblackColor,
-                  Color(0xFF313131),
+                  Color(0xFF54ea82),
                   /***********Couleur primaire**************/
                   //kPrimaryColor,
-                  Color(0xFF43ff7c),
+                  //Color(0xFF43ff7c),
+                  Color(0xFFb8b8b8),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.centerRight,

@@ -6,22 +6,34 @@ import 'package:green_wallet/screens/profile/profile_screen.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 import 'icon_btn_with_counter.dart';
-import 'search_field.dart';
 
-class HomeHeader extends StatelessWidget {
+class HomeHeader extends PreferredSize {
   const HomeHeader({
     Key key,
-  }) : super(key: key);
+  });
 
   @override
+  Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
   Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+    return Container(
+      color: Color(0xFFF5F6F9),
+      padding: EdgeInsets.fromLTRB(15.0, 30.0, 10.0, 4.0),
+      //EdgeInsets.all(getProportionateScreenWidth(30)),
+      // EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SearchField(),
+          Text(
+            "GREEN WALLET",
+            style: TextStyle(
+              fontSize: getProportionateScreenWidth(15),
+              color: kPrimaryColor,
+              fontWeight: FontWeight.bold,
+              //fontFamily: 'cursive',
+            ),
+            textAlign: TextAlign.left,
+          ),
+          Spacer(),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart Icon.svg",
             numOfitem: 3,
@@ -42,7 +54,7 @@ class HomeHeader extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       //Mettre l'image de l'utilisateur
-                      child: Image.asset('assets/images/Profile Image.png',
+                      child: Image.asset("assets/images/account.png",
                           width: 100.0, height: 100.0),
                     ),
                   ),

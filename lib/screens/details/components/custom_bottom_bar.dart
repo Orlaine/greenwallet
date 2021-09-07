@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:green_wallet/components/default_button.dart';
 import 'package:green_wallet/constants.dart';
+
+import '../../../size_config.dart';
+import '../details_screen.dart';
 
 //import '../constants.dart';
 //import '../enums.dart';
@@ -27,17 +31,11 @@ class CustomBottomBar extends PreferredSize {
         ),*/
       ),
       child: SizedBox(
-        height: 50,
-        width: 0,
-        child: TextButton(
-            child: Text('Ajouter au panier'),
-            style: TextButton.styleFrom(
-              //primary: Colors.teal[200],
-              primary: Colors.white,
-              backgroundColor: kPrimaryColor,
-              textStyle: TextStyle(color: Colors.black, fontSize: 25),
-            ),
-            onPressed: () {}),
+        width: getProportionateScreenWidth(190),
+        child: DefaultButton(
+          text: "Ajouter au panier",
+          press: () {},
+        ),
       ),
       /* child: TextButton(
           child: Text('Ajouter au panier'),

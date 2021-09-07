@@ -1,9 +1,48 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:green_wallet/screens/sign_in/sign_in_screen.dart';
 
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
 class Body extends StatelessWidget {
+  Future<String> getName() async {
+    String name = '';
+    //await Firebase.initializeApp();
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+    if (_auth.currentUser != null) {
+      print(_auth.currentUser.phoneNumber);
+      print(_auth.currentUser.displayName);
+      print(_auth.currentUser.uid);
+      final data =
+          await firestore.collection('users').doc(_auth.currentUser.uid).get();
+      name = data['name'].toString();
+      print('***************$name*************');
+      return name;
+    } else {
+      print('***************ce n\'est pas bon*************');
+      return null;
+    }
+  }
+
+  Future<String> getPhone() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+    if (_auth.currentUser != null) {
+      print(_auth.currentUser.phoneNumber);
+      print(_auth.currentUser.displayName);
+      print(_auth.currentUser.uid);
+      return _auth.currentUser.phoneNumber;
+    } else {
+      print('***************ce n\'est pas bon*************');
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -12,30 +51,79 @@ class Body extends StatelessWidget {
         children: [
           ProfilePic(),
           SizedBox(height: 20),
+          //Text("Username: username"),
+          FutureBuilder<String>(
+              future: getName(),
+              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                if (snapshot.hasData) {
+                  return Text(
+                    //"ANNE",
+                    "Username: ${snapshot.data}",
+                    style: GoogleFonts.spartan(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black),
+                  );
+                } else {
+                  return Text(
+                    "Username: Ana",
+                    style: GoogleFonts.spartan(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black),
+                  );
+                }
+              }),
+          SizedBox(height: 10),
+          //Text("phoneNuumber: phoneNuumber"),
+          FutureBuilder<String>(
+              future: getPhone(),
+              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                if (snapshot.hasData) {
+                  return Text(
+                    //"ANNE",
+                    "Téléphone: ${snapshot.data}",
+                    style: GoogleFonts.spartan(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black),
+                  );
+                } else {
+                  return Text(
+                    "Téléphone: 622 34 56 78",
+                    style: GoogleFonts.spartan(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black),
+                  );
+                }
+              }),
+          SizedBox(height: 10),
           ProfileMenu(
-            text: "My Account",
-            icon: "assets/icons/User Icon.svg",
+            text: "Mes factures",
+            icon: "assets/icons/Parcel.svg",
             press: () => {},
           ),
           ProfileMenu(
-            text: "Notifications",
-            icon: "assets/icons/Bell.svg",
+            text: "Mes statistiques",
+            icon: "assets/icons/Flash Icon.svg",
             press: () {},
           ),
           ProfileMenu(
-            text: "Settings",
-            icon: "assets/icons/Settings.svg",
-            press: () {},
-          ),
-          ProfileMenu(
-            text: "Help Center",
-            icon: "assets/icons/Question mark.svg",
-            press: () {},
-          ),
-          ProfileMenu(
-            text: "Log Out",
+            text: "Deconnexion",
             icon: "assets/icons/Log out.svg",
-            press: () {},
+            press: () async {
+              await FirebaseAuth.instance.signOut();
+              Navigator.pushNamed(context, SignInScreen.routeName);
+              await Firebase.initializeApp();
+              final FirebaseAuth _auth = FirebaseAuth.instance;
+              if (_auth.currentUser != null) {
+                print("C'est pas bonn, l'utilisateur n'est pas déconnecté");
+                print("Voici: ${_auth.currentUser.uid}");
+              } else {
+                print("C'est bon, l'utilisateur est déconnecté");
+              }
+            },
           ),
         ],
       ),

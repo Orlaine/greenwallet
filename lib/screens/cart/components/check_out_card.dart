@@ -37,7 +37,7 @@ class CheckoutCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            /*  Row(
               children: [
                 Container(
                   padding: EdgeInsets.all(10),
@@ -56,9 +56,9 @@ class CheckoutCard extends StatelessWidget {
                   Icons.arrow_forward_ios,
                   size: 12,
                   color: kTextColor,
-                )
+                ) 
               ],
-            ),
+            ), */
             SizedBox(height: getProportionateScreenHeight(20)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,7 +77,7 @@ class CheckoutCard extends StatelessWidget {
                 SizedBox(
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
-                    text: "Check Out",
+                    text: "Payer",
                     press: () {},
                   ),
                 ),

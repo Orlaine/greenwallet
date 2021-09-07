@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:green_wallet/components/product_card.dart';
 import 'package:green_wallet/models/Product.dart';
 import 'package:green_wallet/screens/actuality/components/home_actu.dart';
+import 'package:green_wallet/screens/tickets/home_ticket_screen.dart';
 
 import '../../../size_config.dart';
 import 'section_title.dart';
@@ -18,7 +19,7 @@ class PopularProducts extends StatelessWidget {
               title: "Tickets à la une",
               press: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => HomeActuScreen(
+                    builder: (context) => HomeTicketScreen(
                         //article: widget.article,
                         )));
               }),

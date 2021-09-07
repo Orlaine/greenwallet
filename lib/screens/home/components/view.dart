@@ -15,18 +15,20 @@ class ViewMap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      //color: Color(0xFFF5F6F9),
+
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Vous recherchez une machine?",
+            "Vous recherchez une GreenBox?",
             style: TextStyle(
-              fontSize: getProportionateScreenWidth(15),
+              fontSize: getProportionateScreenWidth(14),
               color: Colors.black,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w400,
             ),
             textAlign: TextAlign.left,
           ),
@@ -48,7 +50,7 @@ class ViewMap extends StatelessWidget {
                 textStyle: TextStyle(color: Colors.black, fontSize: 10),*/
               ),
               onPressed: () {
-                Navigator.pushNamed(context, BankScreen.routeName);
+                Navigator.pushNamed(context, GMapScreen.routeName);
               }),
         ],
       ),

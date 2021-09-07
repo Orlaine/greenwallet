@@ -81,7 +81,8 @@ class _OtpFormState extends State<OtpForm> {
                     'cellnumber': "phoneNumber" */
                     'name': "${arguments["name"]}",
                     'code': "${arguments["password"]}",
-                    'phonenumber': "${arguments["phoneNumber"]}"
+                    'phonenumber': "${arguments["phoneNumber"]}",
+                    'wallet': 0
                   }, SetOptions(merge: true))
                 }
             });
@@ -89,7 +90,9 @@ class _OtpFormState extends State<OtpForm> {
       verificationFailed: (FirebaseAuthException e) {
         //print(e.toString());
         if (e.code == 'invalid-phone-number') {
-          print('The provided phone number is not valid.');
+          print('Le numéro que vous avez entré est invalide');
+        } else {
+          print(e);
         }
         print("********B**********");
       },
@@ -108,8 +111,10 @@ class _OtpFormState extends State<OtpForm> {
     // Update the UI - wait for the user to enter the SMS code
     print("******************test code sent *****************");
     print("******************Je suis dans sendCode *****************");
-    print("******************test $verificationCode *****************");
-    print("******************test $smscode *****************");
+    print(
+        "******************code de vérification $verificationCode *****************");
+    print(
+        "******************smscode que j'ai entré $smscode *****************");
 
     print("******************Avant PhoneAuthCredential *****************");
 
@@ -265,7 +270,7 @@ class _OtpFormState extends State<OtpForm> {
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           DefaultButton(
-            text: "Continuer ${arguments["phoneNumber"]}",
+            text: "Continuer",
             /* press: () async {
               if (_formKeyOTP.currentState.validate()) {
                 // If the form is valid, we want to show a loading Snackbar
@@ -324,6 +329,7 @@ class _OtpFormState extends State<OtpForm> {
             }, */
 
             press: () async {
+              FirebaseAuth _auth = FirebaseAuth.instance;
               if (_formKeyOTP.currentState.validate()) {
                 sendCode(
                     _text1.text.toString() +
@@ -335,7 +341,9 @@ class _OtpFormState extends State<OtpForm> {
                     arguments);
                 //  _formKeyOTP.currentState.save();
                 // if all are valid then go to success screen
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                if (_auth.currentUser != null) {
+                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                }
               }
               //authentication(arguments);
             },

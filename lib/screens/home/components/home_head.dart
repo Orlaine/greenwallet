@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_wallet/screens/buy/buy_screen.dart';
 import 'package:green_wallet/screens/profile/profile_screen.dart';
 
 import '../../../constants.dart';
@@ -80,7 +81,9 @@ class HomeHead extends StatelessWidget {
                       backgroundColor: Colors.amber,
                       textStyle: TextStyle(color: Colors.black, fontSize: 10),
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      //Navigator.pushNamed(context, BuyScreen.routeName);
+                    }),
               ]),
             ],
           )),

@@ -3,21 +3,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:green_wallet/models/Product.dart';
 import 'package:green_wallet/screens/details/details_screen.dart';
 
-import '../constants.dart';
-import '../size_config.dart';
+import '../../../constants.dart';
+import '../../../size_config.dart';
 
-class ProductCard extends StatelessWidget {
-  const ProductCard({
+class TicketCard extends StatelessWidget {
+  const TicketCard({
     Key key,
     this.width = 130,
     this.aspectRetio = 1.02,
     @required this.product,
-    @required this.press,
   }) : super(key: key);
 
   final double width, aspectRetio;
   final Product product;
-  final VoidCallback press;
 
   @override
   Widget build(BuildContext context) {

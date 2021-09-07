@@ -51,7 +51,7 @@ List<Actuality> demoActuality = [
   Actuality(
     id: 1,
     images: "assets/images/venice.jpg",
-    title: "Une destination nouvelle pour les passionnés de voyage!",
+    title: "Destination nouvelle !",
     date: DateFormat('2000-01-30 15:50'),
     content: description,
     categorie: "astuce",
