@@ -1,24 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:green_wallet/screens/profile/components/avatar.dart';
+
+import '../../../constants.dart';
 
 class ProfilePic extends StatelessWidget {
   const ProfilePic({
     Key key,
+    this.avatarUrl,
   }) : super(key: key);
+  final String avatarUrl;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 115,
-      width: 115,
+      width: 100,
       child: Stack(
         fit: StackFit.expand,
         overflow: Overflow.visible,
         children: [
-          CircleAvatar(
+          Avatar(),
+          /* avatarUrl == null
+              ? CircleAvatar(
+                  radius: 50.0,
+                  backgroundColor: Color(0xFFFeeefee),
+                  //backgroundColor: Colors.green,
+                  backgroundImage: AssetImage("assets/images/account_i.png"),
+                  //child: SvgPicture.asset("assets/images/account.png"),
+                )
+              : CircleAvatar(
+                  radius: 50.0,
+                  backgroundImage: NetworkImage(avatarUrl),
+                ), */
+          /*  CircleAvatar(
             backgroundColor: Color(0xFFFeeefee),
             backgroundImage: AssetImage("assets/images/account.png"),
-          ),
+          ), */
           Positioned(
             right: -16,
             bottom: 0,

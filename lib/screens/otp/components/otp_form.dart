@@ -6,6 +6,7 @@ import 'package:green_wallet/components/default_button.dart';
 import 'package:green_wallet/size_config.dart';
 import 'package:green_wallet/screens/login_success/login_success_screen.dart';
 import '../../../constants.dart';
+import 'package:dio/dio.dart';
 
 //FirebaseApp secondaryApp = Firebase.app('SecondaryApp');
 //FirebaseAuth auth = FirebaseAuth.instanceFor(app: secondaryApp);
@@ -69,12 +70,32 @@ class _OtpFormState extends State<OtpForm> {
         //await auth.signInWithCredential(credential);
         print("********A**********");
         //auto code complete (not manually)
-        await auth.signInWithCredential(credential).then((user) async => {
-              if (user != null)
+        await auth.signInWithCredential(credential).then((user) async {
+          print('test1');
+          print(user);
+          try {
+            Response response;
+            var dio = Dio();
+            // Optionally the request above could also be done as
+            response = await dio.post(
+                'https://us-central1-mygreen-1d50a.cloudfunctions.net/clients/${auth.currentUser.uid}',
+                data: {
+                  'username': '${arguments["name"]}',
+                  'code': "${arguments["password"]}"
+                });
+            print('test2');
+            print(
+                "************vOICI  CE QUE JE PASSE EN PARAMETRE1 ${auth.currentUser.uid}***************");
+            print(response.data.toString());
+          } catch (e) {
+            print(e);
+          }
+
+          /* if (user != null)
                 {
                   //store registration details in firestore database
                   await firestore
-                      .collection('users')
+                      .collection('clients')
                       .doc(auth.currentUser.uid)
                       .set({
                     /* 'name': "anne",
@@ -84,8 +105,8 @@ class _OtpFormState extends State<OtpForm> {
                     'phonenumber': "${arguments["phoneNumber"]}",
                     'wallet': 0
                   }, SetOptions(merge: true))
-                }
-            });
+                } */
+        });
       },
       verificationFailed: (FirebaseAuthException e) {
         //print(e.toString());
@@ -127,13 +148,33 @@ class _OtpFormState extends State<OtpForm> {
     print("******************Avant signInWithCredential *****************");
     // Sign the user in (or link) with the credential
 
-    await auth.signInWithCredential(credential).then((user) async => {
+    /*************************************************************************************************************************/
+
+    await auth.signInWithCredential(credential).then((user) async {
+      try {
+        Response response;
+        var dio = Dio();
+        // Optionally the request above could also be done as
+        response = await dio.post(
+            'https://us-central1-mygreen-1d50a.cloudfunctions.net/clients/${auth.currentUser.uid}',
+            data: {
+              'username': '${arguments["name"]}',
+              'code': "${arguments["password"]}"
+            });
+        print(
+            "************vOICI  CE QUE JE PASSE EN PARAMETRE2 ${auth.currentUser.uid}***************");
+        print(response.data.toString());
+      } catch (e) {
+        print(e);
+      }
+    });
+    /* await auth.signInWithCredential(credential).then((user) async => {
           //sign in was success
           if (user != null)
             {
               //store registration details in firestore database
               await firestore
-                  .collection('users')
+                  .collection('clients')
                   .doc(auth.currentUser.uid)
                   .set({
                 /* 'name': "anne",
@@ -143,7 +184,7 @@ class _OtpFormState extends State<OtpForm> {
                 'phonenumber': "${arguments["phoneNumber"]}"
               }, SetOptions(merge: true))
             }
-        });
+        }); */
     print("******************test signInWithCredential *****************");
   }
 
@@ -291,7 +332,7 @@ class _OtpFormState extends State<OtpForm> {
                               {
                                 //store registration details in firestore database
                                 await firestore
-                                    .collection('users')
+                                    .collection('clients')
                                     .doc(auth.currentUser.uid)
                                     .set({
                                   /* 'name': nameController
@@ -343,6 +384,7 @@ class _OtpFormState extends State<OtpForm> {
                 // if all are valid then go to success screen
                 if (_auth.currentUser != null) {
                   Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                  print(_auth.currentUser.uid);
                 }
               }
               //authentication(arguments);

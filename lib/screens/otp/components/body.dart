@@ -26,9 +26,8 @@ class Body extends StatelessWidget {
                   height: 1.5,
                 ),
               ),
-              Text(
-                  "Nous vous avons envoyé un code de \n      vérification au +237 698 87 ** **"),
-              buildTimer(),
+              Text("Nous vous avons envoyé un code de vérification"),
+              //buildTimer(),
               OtpForm(
                 phoneNumber: '',
                 password: '',

@@ -44,6 +44,15 @@ class _SignUpFormState extends State<SignUpForm> {
   }
 
   @override
+  void dispose() {
+    // Clean up the controller when the Widget is disposed
+    _phoneController.dispose();
+    _codeController.dispose();
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
@@ -158,7 +167,7 @@ class _SignUpFormState extends State<SignUpForm> {
       },
       decoration: InputDecoration(
         labelText: "Numero de Téléphone",
-        hintText: "Entrez votre numéro",
+        hintText: "Entrez votre numero de téléphone",
         // If  you are using latest version of flutter then lable text and hint text shown like this
         // if you r using flutter less then 1.20.* then maybe this is not working properly
         floatingLabelBehavior: FloatingLabelBehavior.always,

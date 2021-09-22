@@ -16,8 +16,8 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 class _GenerateQRState extends State<GenerateQR> {
-  String qrData = "A46UeMPOzSPrWjqEbAQDrNvrlTz";
-  //String qrData = "${_auth.currentUser.uid}";
+  //String qrData = "A46UeMPOzSPrWjqEbAQDrNvrlTz";
+  String qrData = "${_auth.currentUser.uid}";
   final qrdataFeed = TextEditingController();
 
   void initstate() {

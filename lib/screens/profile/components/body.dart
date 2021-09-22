@@ -18,9 +18,11 @@ class Body extends StatelessWidget {
       print(_auth.currentUser.phoneNumber);
       print(_auth.currentUser.displayName);
       print(_auth.currentUser.uid);
-      final data =
-          await firestore.collection('users').doc(_auth.currentUser.uid).get();
-      name = data['name'].toString();
+      final data = await firestore
+          .collection('clients')
+          .doc(_auth.currentUser.uid)
+          .get();
+      name = data['username'].toString();
       print('***************$name*************');
       return name;
     } else {
@@ -46,13 +48,68 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: EdgeInsets.symmetric(vertical: 5),
       child: Column(
         children: [
-          ProfilePic(),
+          Row(children: [
+            SizedBox(width: 30),
+            ProfilePic(),
+            SizedBox(width: 20),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              FutureBuilder<String>(
+                  future: getName(),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(
+                        //"ANNE",
+                        "Salut ${snapshot.data} !",
+                        style: GoogleFonts.spartan(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black),
+                      );
+                    } else {
+                      return Text(
+                        "Salut Anonyme!",
+                        style: GoogleFonts.spartan(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black),
+                      );
+                    }
+                  }),
+              SizedBox(height: 10),
+              //Text("phoneNuumber: phoneNuumber"),
+              FutureBuilder<String>(
+                  future: getPhone(),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<String> snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(
+                        //"ANNE",
+                        "Numéro: ${snapshot.data}",
+                        style: GoogleFonts.spartan(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black),
+                      );
+                    } else {
+                      return Text(
+                        "Téléphone: 622 34 56 78",
+                        style: GoogleFonts.spartan(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black),
+                      );
+                    }
+                  }),
+            ])
+          ]),
+          //ProfilePic(),
           SizedBox(height: 20),
           //Text("Username: username"),
-          FutureBuilder<String>(
+          /* FutureBuilder<String>(
               future: getName(),
               builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
                 if (snapshot.hasData) {
@@ -97,7 +154,7 @@ class Body extends StatelessWidget {
                         color: Colors.black),
                   );
                 }
-              }),
+              }), */
           SizedBox(height: 10),
           ProfileMenu(
             text: "Mes factures",

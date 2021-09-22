@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:green_wallet/screens/home/home_screen.dart';
+import 'package:green_wallet/screens/login_success/login_success_screen.dart';
 import 'package:green_wallet/screens/splash/components/background.dart';
 import 'package:green_wallet/components/rounded_button.dart';
 import 'package:green_wallet/constants.dart';
@@ -37,8 +38,9 @@ class Body extends StatelessWidget {
             RoundedButton(
               text: "CONNEXION",
               press: () {
-                //Navigator.pushNamed(context, SignInScreen.routeName);
-                Navigator.pushNamed(context, HomeScreen.routeName);
+                Navigator.pushNamed(context, SignInScreen.routeName);
+                //Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                //Navigator.pushNamed(context, HomeScreen.routeName);
               },
             ),
             RoundedButton(

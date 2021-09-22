@@ -17,9 +17,19 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
-    {"text": "*****texte tutoriel*****", "image": "assets/images/splash_1.png"},
-    {"text": "*****texte tutoriel*****", "image": "assets/images/splash_2.png"},
-    {"text": "*****texte tutoriel*****", "image": "assets/images/splash_3.png"},
+    {
+      "text": "Vous êtes en possession de l'application \n GreeWallet? SUPER!",
+      "image": "assets/images/mobileApp.png"
+    },
+    {
+      "text": "Utilisez votre QRCode pour iniier \n le processus",
+      "image": "assets/images/qrCode.png"
+    },
+    {
+      "text":
+          "Ensuite, vous pouvez commencer la collecte! \n BONNE CHANCE, La planète te dit MERCI!!",
+      "image": "assets/images/collect.png"
+    },
   ];
   @override
   Widget build(BuildContext context) {

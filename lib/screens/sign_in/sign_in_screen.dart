@@ -409,7 +409,7 @@ class _SignFormState extends State<SignForm> {
     var number = numberController.text.trim();
 
     await _firestore
-        .collection('users')
+        .collection('clients')
         .where('phonenumber', isEqualTo: number)
         .get()
         .then((result) {

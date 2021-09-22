@@ -15,18 +15,25 @@ class CardWidget extends StatelessWidget {
 
   String name = '';
   String wallet = '';
+  String datetime = '';
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<String> getName() async {
     //await Firebase.initializeApp();
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
     if (_auth.currentUser != null) {
+      print(
+          "********************<<<<<<<<<<<<${_auth.currentUser.uid}>>>>>>>>>>>>>>>>****************");
       print(_auth.currentUser.phoneNumber);
       print(_auth.currentUser.displayName);
       print(_auth.currentUser.uid);
-      final data =
-          await firestore.collection('users').doc(_auth.currentUser.uid).get();
-      name = data['name'].toString();
+      final data = await firestore
+          .collection('clients')
+          .doc(_auth.currentUser.uid)
+          .get();
+      name = data['username'].toString();
       print('***************$name*************');
       return name;
     } else {
@@ -35,18 +42,40 @@ class CardWidget extends StatelessWidget {
     }
   }
 
-  Future<String> getCoin() async {
+  Future<String> getDate() async {
     //await Firebase.initializeApp();
     final FirebaseAuth _auth = FirebaseAuth.instance;
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    if (_auth.currentUser != null) {
+      final data = await firestore
+          .collection('clients')
+          .doc(_auth.currentUser.uid)
+          .get();
+      datetime = data['createdAt'].toString();
+      print('***************$datetime*************');
+      return datetime;
+    } else {
+      print('***************ce n\'est pas bon*************');
+      return null;
+    }
+  }
+
+  Future<String> getCoin() async {
+    //await Firebase.initializeApp();
+    //final FirebaseAuth _auth = FirebaseAuth.instance;
     final FirebaseFirestore firestore = FirebaseFirestore.instance;
     if (_auth.currentUser != null) {
       print(_auth.currentUser.phoneNumber);
       print(_auth.currentUser.displayName);
       print(_auth.currentUser.providerData);
-      final variable =
-          await firestore.collection('users').doc(_auth.currentUser.uid).get();
-      wallet = variable['wallet'].toString();
-      print('***************$wallet*************');
+      final variable = await firestore
+          .collection('clients')
+          .doc(_auth.currentUser.uid)
+          .get();
+      wallet = variable['somme_wallet'].toString();
+      print(
+          '***************<<<<<<<<<<<<<<<<<<$wallet>>>>>>>>>>>>>>>>>>*************');
       return wallet;
     } else {
       print('***************ce n\'est pas bon*************');
@@ -160,7 +189,7 @@ class CardWidget extends StatelessWidget {
                               );
                             } else {
                               return Text(
-                                "10",
+                                "...",
                                 //snapshot.data,
                                 style: GoogleFonts.spartan(
                                   fontSize: 35,
@@ -221,7 +250,7 @@ class CardWidget extends StatelessWidget {
                                     );
                                   } else {
                                     return Text(
-                                      "Ana",
+                                      "...",
                                       style: GoogleFonts.spartan(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w600,
@@ -237,29 +266,52 @@ class CardWidget extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          /* Container(
+                          Container(
                             padding: EdgeInsets.only(
-                                left: 15, top: 25, bottom: 10, right: 20),
+                                left: 15, top: 15, bottom: 10, right: 20),
                             child: Text(
-                              'IDENTIFIANT',
+                              'DEPUIS LE:',
                               style: GoogleFonts.spartan(
                                 fontSize: 7,
                                 fontWeight: FontWeight.w500,
                                 color: kColor,
                               ),
                             ),
-                          ), */
+                          ),
                           Container(
                             padding: EdgeInsets.only(
-                                left: 15, top: 20, bottom: 10, right: 20),
-                            child: Text(
+                                left: 15, top: 0, bottom: 10, right: 20),
+                            child: FutureBuilder<String>(
+                                future: getDate(),
+                                builder: (BuildContext context,
+                                    AsyncSnapshot<String> snapshot) {
+                                  if (snapshot.hasData) {
+                                    return Text(
+                                      //"ANNE",
+                                      snapshot.data,
+                                      style: GoogleFonts.spartan(
+                                          fontSize: 9,
+                                          fontWeight: FontWeight.w600,
+                                          color: kColor),
+                                    );
+                                  } else {
+                                    return Text(
+                                      "...",
+                                      style: GoogleFonts.spartan(
+                                          fontSize: 9,
+                                          fontWeight: FontWeight.w600,
+                                          color: kColor),
+                                    );
+                                  }
+                                }),
+                            /* child: Text(
                               'DEPUIS LE: 31/08/21',
                               style: GoogleFonts.spartan(
                                 fontSize: 9,
                                 fontWeight: FontWeight.w600,
                                 color: kColor,
                               ),
-                            ),
+                            ), */
                           ),
                         ],
                       ),

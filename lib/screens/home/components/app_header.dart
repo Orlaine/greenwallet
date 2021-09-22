@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:green_wallet/screens/bank_account/bank_screen.dart';
 import 'package:green_wallet/screens/cart/cart_screen.dart';
+import 'package:green_wallet/screens/profile/components/avatar.dart';
 import 'package:green_wallet/screens/profile/profile_screen.dart';
 
 import '../../../constants.dart';
@@ -51,12 +52,13 @@ class HomeHeader extends PreferredSize {
                     Navigator.pushNamed(context, ProfileScreen.routeName);
                   },
                   child: Container(
-                    child: ClipRRect(
+                    child: Avatar(),
+                    /* ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       //Mettre l'image de l'utilisateur
                       child: Image.asset("assets/images/account.png",
                           width: 100.0, height: 100.0),
-                    ),
+                    ), */
                   ),
                 )
               ],

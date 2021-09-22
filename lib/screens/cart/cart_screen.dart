@@ -17,14 +17,15 @@ class CartScreen extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      title: Column(
+      title: Row(
         children: [
           Text(
-            "Your Cart",
+            "Mon panier",
             style: TextStyle(color: Colors.black),
           ),
+          SizedBox(width: 10),
           Text(
-            "${demoCarts.length} items",
+            "(${demoCarts.length} articles)",
             style: Theme.of(context).textTheme.caption,
           ),
         ],
