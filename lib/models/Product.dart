@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Product {
@@ -5,20 +6,22 @@ class Product {
   final String title, description;
   final String category;
   final List<String> images;
-  final double rating, price;
+  final int rating, price;
   final bool isFavourite, isPopular;
 
   Product({
     @required this.id,
     @required this.category,
     @required this.images,
-    this.rating = 0.0,
+    this.rating = 0,
     this.isFavourite = false,
     this.isPopular = false,
     @required this.title,
     @required this.price,
     @required this.description,
   });
+  final CollectionReference _productsRef =
+      FirebaseFirestore.instance.collection("Products");
 }
 
 // Our demo Products
@@ -34,7 +37,7 @@ List<Product> demoProducts = [
     title: "Ticket de bus",
     price: 100,
     description: description,
-    rating: 4.8,
+    rating: 4,
     category: "transport",
     isFavourite: true,
     isPopular: true,
@@ -48,7 +51,7 @@ List<Product> demoProducts = [
     title: "Appels illimités",
     price: 50,
     description: description,
-    rating: 4.1,
+    rating: 4,
     category: "telephone",
     isPopular: true,
   ),
@@ -60,7 +63,7 @@ List<Product> demoProducts = [
     title: "Bon d'achat",
     price: 36,
     description: description,
-    rating: 4.1,
+    rating: 4,
     category: "bonachat",
     isFavourite: true,
     isPopular: true,
@@ -73,7 +76,7 @@ List<Product> demoProducts = [
     title: "Bon de carburant",
     price: 200,
     description: description,
-    rating: 4.1,
+    rating: 4,
     category: "transport",
     isFavourite: true,
     isPopular: true,
@@ -86,7 +89,7 @@ List<Product> demoProducts = [
     title: "Forfait",
     price: 200,
     description: description,
-    rating: 4.1,
+    rating: 4,
     category: "telephone",
     isFavourite: true,
     isPopular: true,
@@ -99,7 +102,7 @@ List<Product> demoProducts = [
     title: "Un test",
     price: 50,
     description: description,
-    rating: 4.1,
+    rating: 4,
     category: "telephone",
     isPopular: false,
   ),
@@ -114,7 +117,7 @@ List<Product> TelProducts = [
     title: "Appels illimités",
     price: 50,
     description: description,
-    rating: 4.1,
+    rating: 4,
     category: "telephone",
     isPopular: true,
   ),
@@ -126,7 +129,7 @@ List<Product> TelProducts = [
     title: "Forfait",
     price: 200,
     description: description,
-    rating: 4.1,
+    rating: 4,
     category: "telephone",
     isFavourite: true,
     isPopular: true,
@@ -139,7 +142,7 @@ List<Product> TelProducts = [
     title: "Un test",
     price: 50,
     description: description,
-    rating: 4.1,
+    rating: 4,
     category: "telephone",
     isPopular: false,
   ),
@@ -156,7 +159,7 @@ List<Product> TransportProducts = [
     title: "Ticket de bus",
     price: 100,
     description: description,
-    rating: 4.8,
+    rating: 4,
     category: "transport",
     isFavourite: true,
     isPopular: true,
@@ -169,7 +172,7 @@ List<Product> TransportProducts = [
     title: "Bon de carburant",
     price: 200,
     description: description,
-    rating: 4.1,
+    rating: 4,
     category: "transport",
     isFavourite: true,
     isPopular: true,

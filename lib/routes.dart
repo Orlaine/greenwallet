@@ -4,7 +4,11 @@ import 'package:green_wallet/screens/cart/cart_screen.dart';
 import 'package:green_wallet/screens/codeqr/generateqr.dart';
 import 'package:green_wallet/screens/complete_profile/complete_profile_screen.dart';
 import 'package:green_wallet/screens/details/details_screen.dart';
+import 'package:green_wallet/screens/factures/facture_screen.dart';
 import 'package:green_wallet/screens/forgot_password/forgot_password_screen.dart';
+import 'package:green_wallet/screens/historique/historique_screen.dart';
+import 'package:green_wallet/screens/historique/screens/depots/depot_screen.dart';
+import 'package:green_wallet/screens/historique/screens/depenses/depenses_screen.dart';
 import 'package:green_wallet/screens/home/home_screen.dart';
 import 'package:green_wallet/screens/login_success/login_success_screen.dart';
 import 'package:green_wallet/screens/map/map_screen.dart';
@@ -32,11 +36,16 @@ final Map<String, WidgetBuilder> routes = {
         onProductAdd: () {},
         product: null,
       ),
+  /*  DetailsScreen.routeName: (context) => DetailsScreen(productId: ''), */
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   GMapScreen.routeName: (context) => GMapScreen(),
   BankScreen.routeName: (context) => BankScreen(),
   BuyScreen.routeName: (context) => BuyScreen(),
+  HistoriqueScreen.routeName: (context) => HistoriqueScreen(),
   GenerateQR.routeName: (context) => GenerateQR(),
   HomeTicketScreen.routeName: (context) => HomeTicketScreen(),
+  DepotScreen.routeName: (context) => DepotScreen(),
+  DepensesScreen.routeName: (context) => DepensesScreen(),
+  FactureScreen.routeName: (context) => FactureScreen(),
 };

@@ -22,7 +22,7 @@ class _BodyState extends State<Body> {
       "image": "assets/images/mobileApp.png"
     },
     {
-      "text": "Utilisez votre QRCode pour iniier \n le processus",
+      "text": "Utilisez votre QRCode pour initier \n le processus",
       "image": "assets/images/qrCode.png"
     },
     {

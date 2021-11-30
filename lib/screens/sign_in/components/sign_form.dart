@@ -1141,6 +1141,9 @@ class _SignFormState extends State<SignForm> {
               });
         },
         verificationFailed: (FirebaseAuthException error) {
+          print(
+              "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+          print(error);
           displaySnackBar(
               'Erreur de validation. Veuillez rééssayer plutard s\'il vous plait');
           setState(() {

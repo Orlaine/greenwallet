@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:green_wallet/constants.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../size_config.dart';
@@ -40,6 +42,7 @@ class _GenerateQRState extends State<GenerateQR> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              SizedBox(height: 5),
               QrImage(data: qrData),
               SizedBox(height: 5),
               /* Text(
@@ -81,8 +84,18 @@ class _GenerateQRState extends State<GenerateQR> {
                   ),
                 ),
               ), */
+              SizedBox(height: 15),
               Text(
-                "Votre id: $qrData",
+                "   Votre identifiant est:",
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(20),
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.left,
+              ),
+              Text(
+                "$qrData",
                 style: TextStyle(
                   fontSize: getProportionateScreenWidth(14),
                   color: Colors.black,

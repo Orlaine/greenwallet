@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:green_wallet/screens/factures/facture_screen.dart';
+import 'package:green_wallet/screens/historique/historique_screen.dart';
 import 'package:green_wallet/screens/sign_in/sign_in_screen.dart';
 
 import 'profile_menu.dart';
@@ -159,12 +161,16 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Mes factures",
             icon: "assets/icons/Parcel.svg",
-            press: () => {},
+            press: () {
+              Navigator.pushNamed(context, FactureScreen.routeName);
+            },
           ),
           ProfileMenu(
-            text: "Mes statistiques",
+            text: "Mon historique",
             icon: "assets/icons/Flash Icon.svg",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, HistoriqueScreen.routeName);
+            },
           ),
           ProfileMenu(
             text: "Deconnexion",

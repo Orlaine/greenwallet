@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:green_wallet/screens/cart/cart_screen.dart';
 import 'package:green_wallet/screens/home/components/icon_btn_with_counter.dart';
+import 'package:green_wallet/screens/profile/components/avatar.dart';
 import 'package:green_wallet/screens/profile/profile_screen.dart';
 
 import '../../../size_config.dart';
@@ -57,14 +58,7 @@ class AppHeader extends PreferredSize {
                           Navigator.pushNamed(context, ProfileScreen.routeName);
                         },
                         child: Container(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            //Mettre l'image de l'utilisateur
-                            child: Image.asset(
-                                'assets/images/Profile Image.png',
-                                width: 100.0,
-                                height: 100.0),
-                          ),
+                          child: Avatar(),
                         ),
                       )
                     ],

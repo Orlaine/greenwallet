@@ -206,12 +206,9 @@ class CustomBottomNavBar extends StatelessWidget {
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:green_wallet/screens/bank_account/bank_screen.dart';
 import 'package:green_wallet/screens/codeqr/generateqr.dart';
 import 'package:green_wallet/screens/home/home_screen.dart';
 import 'package:green_wallet/screens/map/map_screen.dart';
-import 'package:green_wallet/screens/profile/profile_screen.dart';
 import 'package:green_wallet/screens/tickets/home_ticket_screen.dart';
 
 import '../constants.dart';

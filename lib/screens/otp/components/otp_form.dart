@@ -73,7 +73,7 @@ class _OtpFormState extends State<OtpForm> {
         await auth.signInWithCredential(credential).then((user) async {
           print('test1');
           print(user);
-          try {
+          /*  try {
             Response response;
             var dio = Dio();
             // Optionally the request above could also be done as
@@ -89,23 +89,22 @@ class _OtpFormState extends State<OtpForm> {
             print(response.data.toString());
           } catch (e) {
             print(e);
-          }
+          }  */
 
-          /* if (user != null)
-                {
-                  //store registration details in firestore database
-                  await firestore
-                      .collection('clients')
-                      .doc(auth.currentUser.uid)
-                      .set({
-                    /* 'name': "anne",
+          if (user != null) {
+            //store registration details in firestore database
+            await firestore
+                .collection('clients')
+                .doc(auth.currentUser.uid)
+                .set({
+              /* 'name': "anne",
                     'cellnumber': "phoneNumber" */
-                    'name': "${arguments["name"]}",
-                    'code': "${arguments["password"]}",
-                    'phonenumber': "${arguments["phoneNumber"]}",
-                    'wallet': 0
-                  }, SetOptions(merge: true))
-                } */
+              'name': "${arguments["name"]}",
+              'code': "${arguments["password"]}",
+              'phonenumber': "${arguments["phoneNumber"]}",
+              'wallet': 0
+            }, SetOptions(merge: true));
+          }
         });
       },
       verificationFailed: (FirebaseAuthException e) {
@@ -115,6 +114,9 @@ class _OtpFormState extends State<OtpForm> {
         } else {
           print(e);
         }
+        print(
+            "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        print(e);
         print("********B**********");
       },
 
