@@ -26,13 +26,7 @@ class ContentHomeTicketScreen extends StatefulWidget {
 
 class _ContentHomeTicketScreenState extends State<ContentHomeTicketScreen>
     with SingleTickerProviderStateMixin {
-  List list_name = [
-    "Forfait",
-    "Télephone",
-    "Transport",
-    "Bon d'achat",
-    "Alimentation"
-  ];
+  List list_name = ["Tout", "Forfait", "Transport", "Achats"];
   SwiperController _scrollController = new SwiperController();
   TabController tabController;
   Product ticket;
@@ -220,6 +214,30 @@ class _ContentHomeTicketScreenState extends State<ContentHomeTicketScreen>
                         ),
                         itemBuilder: (context, indexx) =>
                             (ProductCard(product: TransportProducts[indexx])),
+                        /* (TicketCard(
+                            width: 130,
+                            aspectRetio: 1.02,
+                            product: demoProducts[index],
+                          )), */
+                      ),
+                    );
+                  } else if (index == 3) {
+                    return Container(
+                      margin: EdgeInsets.only(top: 20),
+                      //padding: EdgeInsets.only(top: 20),
+                      height: 1500,
+                      width: double.infinity,
+                      child: GridView.builder(
+                        itemCount: AchatProducts.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.75,
+                          mainAxisSpacing: 15.0,
+                          //Taille des contenus (boxs) des tickets
+                          crossAxisSpacing: 10.0,
+                        ),
+                        itemBuilder: (context, indexx) =>
+                            (ProductCard(product: AchatProducts[indexx])),
                         /* (TicketCard(
                             width: 130,
                             aspectRetio: 1.02,

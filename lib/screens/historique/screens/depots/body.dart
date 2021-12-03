@@ -64,34 +64,6 @@ class _BodyState extends State<Body> {
                     ],
                   ),
                 );
-
-                /* Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFFE6E6),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  //padding: EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('Dépôt $index    + ${depot.infos.qte} coins',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 22)),
-                      SizedBox(height: 5),
-                      Text(
-                          'Dépot effectué dans la machine nomée ${depot.machine.nom} située dans la ville de ${depot.machine.localite.ville}, au quartier ${depot.machine.localite.quartier}'),
-                      SizedBox(height: 5),
-                      Container(
-                        width: 10,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                    ],
-                  ),
-                ); */
               },
               separatorBuilder: (context, index) {
                 return Divider();

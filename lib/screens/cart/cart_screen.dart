@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:green_wallet/models/Cart.dart';
+import 'package:green_wallet/screens/cart/components/body.dart';
 
-import 'components/body.dart';
 import 'components/check_out_card.dart';
 
 class CartScreen extends StatelessWidget {
@@ -11,7 +11,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(context),
       body: Body(),
-      bottomNavigationBar: CheckoutCard(),
+      //bottomNavigationBar: CheckoutCard(),
     );
   }
 
@@ -23,10 +23,10 @@ class CartScreen extends StatelessWidget {
             "Mes achats",
             style: TextStyle(color: Colors.black),
           ),
-          Text(
+          /* Text(
             "${demoCarts.length} items",
             style: Theme.of(context).textTheme.caption,
-          ),
+          ), */
         ],
       ),
     );

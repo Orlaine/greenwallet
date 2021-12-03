@@ -88,54 +88,51 @@ class _DetailsScreenState extends State<DetailsScreen> {
             .collection('clients')
             .doc(_auth.currentUser.uid)
             .get();
-        int wallet = int.parse(variable['wallet']);
+        //int wallet = int.parse(variable['wallet']);
+        int wallet = variable['wallet'];
         print(
             '***************<<<<<<<<<<<<<<<<<<$wallet>>>>>>>>>>>>>>>>>>*************');
 
         /******** */
 
         //********/
+        if (agrs.product.price <= wallet) {
+          return _firebaseServices.usersRef
+              .doc(_firebaseServices.getUserId())
+              .update({
+            "panier": FieldValue.arrayUnion([
+              {
+                "title": agrs.product.title,
+                "prix": agrs.product.price,
+                "image": agrs.product.images[0],
+                "description": agrs.product.description
+              }
+            ])
+          }).then((isCalculated) {
+            if (agrs.product.price <= wallet) {
+              int ancien = agrs.product.price;
+              int New = wallet - ancien;
 
-        return _firebaseServices.usersRef
-            .doc(_firebaseServices.getUserId())
-            .update({
-          /*  "panier"[agrs.product.id]: {
-          "title": agrs.product.title,
-          "prix": agrs.product.price,
-          "image": agrs.product.images[0],
-          "description": agrs.product.description
-        } */
-          "panier": FieldValue.arrayUnion([
-            {
-              "title": agrs.product.title,
-              "prix": agrs.product.price,
-              "image": agrs.product.images[0],
-              "description": agrs.product.description
+              _firebaseServices.usersRef
+                  .doc(_firebaseServices.getUserId())
+                  .update({"wallet": New});
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Votre achat a été effectué avec succès'),
+                ),
+              );
             }
-          ])
-        }).then((isCalculated) {
-          if (agrs.product.price <= wallet) {
-            int ancien = agrs.product.price;
-            int New = wallet - ancien;
-
-            _firebaseServices.usersRef
-                .doc(_firebaseServices.getUserId())
-                .update({"wallet": "$New"});
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Votre achat a été effectué avec succès'),
-              ),
-            );
-          }
-          if (agrs.product.price > wallet) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                    'Vous n\'avez pas assez de coins pour effectuer cet achat'),
-              ),
-            );
-          }
-        });
+          });
+        } else {
+          return ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                  'Vous n\'avez pas assez de coins pour effectuer cet achat'),
+            ),
+          );
+        }
+      } else {
+        return Text('No Datas');
       }
     }
 

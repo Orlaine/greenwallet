@@ -29,16 +29,17 @@ List<Product> demoProducts = [
   Product(
     id: 1,
     images: [
-      "assets/images/bus.png",
+      "assets/produits/achat1.jpg",
 /*       "assets/images/ps4_console_white_2.png",
       "assets/images/ps4_console_white_3.png",
       "assets/images/ps4_console_white_4.png", */
     ],
-    title: "Ticket de bus",
-    price: 100,
-    description: description,
+    title: "Bon d'achat Online",
+    price: 10,
+    description:
+        'Achetez des produits en ligne en toute sécurité dans notre nouvelle boutique online. Ce ticket vous donne droit à 5000 francs d\'achats, valide pendant 5 jours. Alors, n\'hésitez plus! ',
     rating: 4,
-    category: "transport",
+    category: "achat",
     isFavourite: true,
     isPopular: true,
   ),
@@ -46,23 +47,25 @@ List<Product> demoProducts = [
     id: 2,
     images: [
       //"assets/images/Image Popular Product 2.png",
-      "assets/images/jackbower.png",
+      "assets/produits/Forfait2.jpg",
     ],
-    title: "Appels illimités",
+    title: "Internet illimités",
     price: 50,
-    description: description,
+    description:
+        "Votre opérateur de téléphonie mobile préféré GreenMobile vous offre 7jours d'internet illimité en 4G au prix de rien. Il vous suffit de collecter des bouteilles, et le monde est à vous, alors, qu\'attendez-vous?",
     rating: 4,
-    category: "telephone",
+    category: "forfait",
     isPopular: true,
   ),
   Product(
     id: 3,
     images: [
-      "assets/images/bon_achat.png",
+      "assets/produits/Alimentation2.jpg",
     ],
-    title: "Bon d'achat",
+    title: "Epicerie",
     price: 36,
-    description: description,
+    description:
+        "Quoi de mieux que des produit bios, frais et disponible. La compagnie GreenEat vous offre un pack de une bouteille d\huile d\olive, une bouteille d\eau et plein d'autres surprises au prix de presque rien. Alos, qu\'attendez vous pour collecter?",
     rating: 4,
     category: "bonachat",
     isFavourite: true,
@@ -71,77 +74,96 @@ List<Product> demoProducts = [
   Product(
     id: 4,
     images: [
-      "assets/images/fuel.png",
+      "assets/produits/Forfait4.jpg",
     ],
-    title: "Bon de carburant",
-    price: 200,
-    description: description,
+    title: "Messages illimités",
+    price: 20,
+    description:
+        "Votre opérateur de téléphonie mobile préféré GreenMobile vous offre 7jours de messages illimités au prix de presque rien. Il vous suffit de collecter des bouteilles, et le monde est à vous, alors, qu\'attendez-vous?",
     rating: 4,
-    category: "transport",
+    category: "forfait",
     isFavourite: true,
     isPopular: true,
   ),
   Product(
     id: 5,
     images: [
-      "assets/images/wallet_home.png",
+      "assets/produits/allimentation1.jpg",
     ],
-    title: "Forfait",
+    title: "Pack alimentation",
     price: 200,
-    description: description,
+    description:
+        'Le pack-découverte conçut par la jeune entreprise GreenEat est constitué de plusieurs produits bio cultivées sans engrais tels que des tomates, des oignons des chous et pleins d\'autres surprises ',
     rating: 4,
-    category: "telephone",
+    category: "alimentation",
     isFavourite: true,
     isPopular: true,
   ),
   Product(
     id: 6,
     images: [
-      "assets/images/Image Popular Product 2.png",
+      "assets/produits/Transport1.jpg",
     ],
-    title: "Un test",
+    title: "Tickets de bus",
     price: 50,
-    description: description,
+    description:
+        "L'entreprise GreenTrans vous offre des tickets de transport d'une valeur de 10000 Francs valables 2 mois en échange d'un geste fait pour l'environnement. Alors, soyez Green!",
     rating: 4,
-    category: "telephone",
+    category: "transport",
     isPopular: false,
   ),
 ];
 List<Product> TelProducts = [
   Product(
-    id: 2,
+    id: 1,
     images: [
       //"assets/images/Image Popular Product 2.png",
-      "assets/images/jackbower.png",
+      "assets/produits/Forfait3.jpg",
     ],
-    title: "Appels illimités",
+    title: "Internet illimités",
     price: 50,
-    description: description,
+    description:
+        "Votre opérateur de téléphonie mobile préféré GreenMobile vous offre 7jours d'internet illimité en 4G au prix de rien. Il vous suffit de collecter des bouteilles, et le monde est à vous, alors, qu\'attendez-vous?",
     rating: 4,
-    category: "telephone",
+    category: "forfait",
     isPopular: true,
   ),
   Product(
-    id: 5,
+    id: 2,
     images: [
-      "assets/images/wallet_home.png",
+      "assets/produits/Forfait1.jpg",
     ],
-    title: "Forfait",
-    price: 200,
-    description: description,
+    title: "Messages illimités",
+    price: 12,
+    description:
+        "Votre opérateur de téléphonie mobile préféré GreenMobile vous offre 7jours de messages illimités au prix de presque rien. Il vous suffit de collecter des bouteilles, et le monde est à vous, alors, qu\'attendez-vous?",
     rating: 4,
-    category: "telephone",
+    category: "forfait",
     isFavourite: true,
     isPopular: true,
   ),
   Product(
-    id: 6,
+    id: 3,
     images: [
-      "assets/images/Image Popular Product 2.png",
+      "assets/produits/Forfait2.jpg",
     ],
-    title: "Un test",
+    title: "Internet haut débit",
     price: 50,
-    description: description,
+    description:
+        "Votre opérateur de téléphonie mobile préféré GreenMobile vous offre 7jours d'internet illimité en 4G au prix de rien. Il vous suffit de collecter des bouteilles, et le monde est à vous, alors, qu\'attendez-vous?",
+    rating: 4,
+    category: "telephone",
+    isPopular: false,
+  ),
+  Product(
+    id: 4,
+    images: [
+      "assets/produits/Forfait4.jpg",
+    ],
+    title: "Messages illimités",
+    price: 50,
+    description:
+        "Votre opérateur de téléphonie mobile préféré GreenMobile vous offre 7jours de messages illimités au prix de presque rien. Il vous suffit de collecter des bouteilles, et le monde est à vous, alors, qu\'attendez-vous?",
     rating: 4,
     category: "telephone",
     isPopular: false,
@@ -151,14 +173,39 @@ List<Product> TransportProducts = [
   Product(
     id: 1,
     images: [
-      "assets/images/bus.png",
-/*       "assets/images/ps4_console_white_2.png",
-      "assets/images/ps4_console_white_3.png",
-      "assets/images/ps4_console_white_4.png", */
+      "assets/produits/transport5.jpg",
+    ],
+    title: "Tickets de bus",
+    price: 50,
+    description:
+        "L'entreprise GreenTrans vous offre des tickets de transport d'une valeur de 10000 Francs valables 2 mois en échange d'un geste fait pour l'environnement. Alors, soyez Green!",
+    rating: 4,
+    category: "transport",
+    isPopular: false,
+  ),
+  Product(
+    id: 2,
+    images: [
+      "assets/produits/Transport1.jpg",
     ],
     title: "Ticket de bus",
-    price: 100,
-    description: description,
+    price: 15,
+    description:
+        "Déplacez vous en toute sécurité dans la ville et profitez de notre offre exceptionnelle qui vous permet d'effectuer 10 déplacements. Ne tardez pas, et surtout, soyez Greens!",
+    rating: 4,
+    category: "transport",
+    isFavourite: true,
+    isPopular: true,
+  ),
+  Product(
+    id: 3,
+    images: [
+      "assets/produits/transport3.jpg",
+    ],
+    title: "Billet d'avion",
+    price: 12,
+    description:
+        "La compagnie GreenAir vous propose des billets d'avion pour des trajets de moins de 4 heures, au prix de quelques bouteilles collectées. Alors n'hésitez plus!",
     rating: 4,
     category: "transport",
     isFavourite: true,
@@ -167,11 +214,70 @@ List<Product> TransportProducts = [
   Product(
     id: 4,
     images: [
-      "assets/images/fuel.png",
+      "assets/produits/Transport4.jpg",
     ],
-    title: "Bon de carburant",
-    price: 200,
-    description: description,
+    title: "Bons d'essence",
+    price: 12,
+    description:
+        "La compagnie GreenOil vous propose un carnet de bons de carburants d'une valeur de 5000 Francs valable dans toutes ses stations localisées sur le territoire Camerounais. Alors, n'hésitez plus!",
+    rating: 4,
+    category: "transport",
+    isFavourite: true,
+    isPopular: true,
+  ),
+];
+
+List<Product> AchatProducts = [
+  Product(
+    id: 1,
+    images: [
+      "assets/produits/achat1.jpg",
+    ],
+    title: "Bon d'achat online",
+    price: 50,
+    description:
+        'Achetez des produits en ligne en toute sécurité dans notre nouvelle boutique online. Ce ticket vous donne droit à 5000 francs d\'achats, valide pendant 5 jours. Alors, n\'hésitez plus! ',
+    rating: 4,
+    category: "transport",
+    isPopular: false,
+  ),
+  Product(
+    id: 2,
+    images: [
+      "assets/produits/achat2.jpg",
+    ],
+    title: "E-achat",
+    price: 15,
+    description:
+        'Achetez des produits en ligne en toute sécurité dans notre nouvelle boutique online. Ce ticket vous donne droit à 5000 francs d\'achats, valide pendant 5 jours. Alors, n\'hésitez plus! ',
+    rating: 4,
+    category: "transport",
+    isFavourite: true,
+    isPopular: true,
+  ),
+  Product(
+    id: 3,
+    images: [
+      "assets/produits/achat3.jpg",
+    ],
+    title: "Bon de Supermarché",
+    price: 12,
+    description:
+        'Achetez des produits d\'une valeur de 100000 Francs  dans nos supermarchés et ce en toute confiance sur la qualité des produits.Ce ticket est valide pendant 5 jours. Alors, n\'hésitez plus! ',
+    rating: 4,
+    category: "transport",
+    isFavourite: true,
+    isPopular: true,
+  ),
+  Product(
+    id: 4,
+    images: [
+      "assets/produits/allimentation1.jpg",
+    ],
+    title: "Achat Légumes",
+    price: 12,
+    description:
+        'Le pack-découverte conçut par la jeune entreprise GreenEat est constitué de plusieurs produits bio cultivées sans engrais tels que des tomates, des oignons des chous et pleins d\'autres surprises ',
     rating: 4,
     category: "transport",
     isFavourite: true,

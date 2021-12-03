@@ -3,7 +3,7 @@ import 'package:green_wallet/components/actu_card.dart';
 import 'package:green_wallet/components/product_card.dart';
 import 'package:green_wallet/models/Actuality.dart';
 import 'package:green_wallet/models/Product.dart';
-import 'package:green_wallet/screens/actuality/components/home_actu.dart';
+import 'package:green_wallet/screens/actuality/components/content_home_actu.dart';
 
 import '../../../size_config.dart';
 import 'section_title.dart';
@@ -17,10 +17,10 @@ class PopularActuality extends StatelessWidget {
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: SectionTitle(
-              title: "Actualités à la une",
+              title: "Quelques astuces",
               press: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => HomeActuScreen(
+                    builder: (context) => ContentHomeActuScreen(
                         //article: widget.article,
                         )));
               }),

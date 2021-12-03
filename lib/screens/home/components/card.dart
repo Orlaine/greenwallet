@@ -515,10 +515,12 @@ class CardWidget extends StatelessWidget {
                             .snapshots(),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
-                              ConnectionState.active) {
-                            wallet = snapshot.data['wallet'];
+                                  ConnectionState.active &&
+                              snapshot.hasData) {
+                            //int wallet = int.parse(snapshot.data['wallet']);
+                            int wallet = snapshot.data['wallet'];
                             return Text(
-                              wallet,
+                              '$wallet',
                               style: GoogleFonts.spartan(
                                 fontSize: 35,
                                 fontWeight: FontWeight.w600,

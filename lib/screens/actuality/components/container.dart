@@ -30,7 +30,7 @@ class _TrendingContainerState extends State<TrendingContainer> {
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: AssetImage(widget.article.images),
+                      image: AssetImage(widget.article.images[0]),
                     )),
               ),
               Positioned(

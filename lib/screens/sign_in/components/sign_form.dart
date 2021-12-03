@@ -759,7 +759,7 @@ class _SignFormState extends State<SignForm> {
                             });
                           },
                         ),
-                        Text("Remember me"),
+                        Text("Se souvenir de moi"),
                         Spacer(),
                       ],
                     ),
@@ -940,7 +940,7 @@ class _SignFormState extends State<SignForm> {
               ),
             ),
             Text("Nous vous avons envoyé un code par sms "),
-            buildTimer(),
+            //buildTimer(),
             Form(
               key: _formKeyOTP,
               child: Column(
@@ -1053,14 +1053,14 @@ class _SignFormState extends State<SignForm> {
                                   ),
                                   child: new Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
+                                    /* children: <Widget>[
                                       new Expanded(
                                         child: Text(
                                           "Resend Code",
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
-                                    ],
+                                    ], */
                                   ),
                                 ),
                               )))

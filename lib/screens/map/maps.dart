@@ -736,8 +736,9 @@ import 'dart:math' show cos, sqrt, asin;
 import 'package:green_wallet/models/green_box.dart';
 
 class Maps extends StatefulWidget {
-  const Maps({Key key, this.listBox}) : super(key: key);
-  final List<GreenBox> listBox;
+  Maps();
+  //const Maps({Key key, this.listBox}) : super(key: key);
+  //final List<GreenBox> listBox;
   @override
   _MapsState createState() => _MapsState();
 }
@@ -793,7 +794,7 @@ class _MapsState extends State<Maps> {
   BitmapDescriptor pinLocationIcon;
   GoogleMapController mapController;
 
-  /* Position _currentPosition = Position(
+  Position _currentPosition = Position(
       timestamp: null,
       latitude: 4.04,
       longitude: 9.67,
@@ -801,8 +802,8 @@ class _MapsState extends State<Maps> {
       heading: 0,
       accuracy: 0,
       speedAccuracy: 0,
-      altitude: 0); */
-  Position _currentPosition;
+      altitude: 0);
+  //Position _currentPosition;
   Position _destinationPosition;
 
   String _placeDistance;

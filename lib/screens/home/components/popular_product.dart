@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:green_wallet/components/product_card.dart';
 import 'package:green_wallet/models/Product.dart';
-import 'package:green_wallet/screens/actuality/components/home_actu.dart';
+import 'package:green_wallet/screens/actuality/components/content_home_actu.dart';
 import 'package:green_wallet/screens/tickets/home_ticket_screen.dart';
 import 'package:green_wallet/widgets/product_card.dart';
 

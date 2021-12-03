@@ -1,3 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:green_wallet/components/app_header.dart';
+import 'package:green_wallet/components/coustom_bottom_nav_bar.dart';
+import 'package:green_wallet/screens/actuality/components/content_home_actu.dart';
+import 'package:green_wallet/screens/tickets/component/body.dart';
+
+import '../../enums.dart';
+
+class HomeActuScreen extends StatelessWidget {
+  static String routeName = "/homeactu";
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppHeader(head: "Actualités"),
+      //body: Body(),
+      body: ContentHomeActuScreen(),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.homeactu),
+    );
+  }
+}
+
+
+
 /* import 'package:flutter/material.dart';
 import 'package:googlenews/Data/data.dart';
 import 'package:googlenews/Widgets/ForYouContainer.dart';

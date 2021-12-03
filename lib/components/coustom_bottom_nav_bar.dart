@@ -206,6 +206,7 @@ class CustomBottomNavBar extends StatelessWidget {
  */
 
 import 'package:flutter/material.dart';
+import 'package:green_wallet/screens/actuality/actu_screen.dart';
 import 'package:green_wallet/screens/codeqr/generateqr.dart';
 import 'package:green_wallet/screens/home/home_screen.dart';
 import 'package:green_wallet/screens/map/map_screen.dart';
@@ -358,7 +359,8 @@ class CustomBottomNavBar extends StatelessWidget {
                               : inActiveIconColor,
                         ),
                         onPressed: () => {
-                              // Navigator.pushNamed(context, ProfileScreen.routeName),
+                              Navigator.pushNamed(
+                                  context, HomeActuScreen.routeName),
                             }),
                     Text(
                       'Actualités',

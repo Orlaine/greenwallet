@@ -43,14 +43,14 @@ class _SignUpFormState extends State<SignUpForm> {
       });
   }
 
-  @override
+  /*  @override
   void dispose() {
     // Clean up the controller when the Widget is disposed
     _phoneController.dispose();
     _codeController.dispose();
     _nameController.dispose();
     super.dispose();
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {

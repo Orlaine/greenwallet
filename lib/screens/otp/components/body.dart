@@ -54,15 +54,15 @@ class Body extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Ce code expire dans "),
-        TweenAnimationBuilder(
+        Text("Veuillez le saisir dans le champ ci dessous "),
+        /* TweenAnimationBuilder(
           tween: Tween(begin: 30.0, end: 0.0),
           duration: Duration(seconds: 60),
           builder: (_, value, child) => Text(
             "00:${value.toInt()}",
             style: TextStyle(color: kPrimaryColor),
           ),
-        ),
+        ), */
       ],
     );
   }

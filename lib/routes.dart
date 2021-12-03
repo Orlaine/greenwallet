@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
+import 'package:green_wallet/screens/actuality/actu_screen.dart';
 import 'package:green_wallet/screens/buy/buy_screen.dart';
 import 'package:green_wallet/screens/cart/cart_screen.dart';
 import 'package:green_wallet/screens/codeqr/generateqr.dart';
 import 'package:green_wallet/screens/complete_profile/complete_profile_screen.dart';
+import 'package:green_wallet/screens/details/details_actu.dart';
 import 'package:green_wallet/screens/details/details_screen.dart';
 import 'package:green_wallet/screens/factures/facture_screen.dart';
 import 'package:green_wallet/screens/forgot_password/forgot_password_screen.dart';
@@ -36,6 +38,9 @@ final Map<String, WidgetBuilder> routes = {
         onProductAdd: () {},
         product: null,
       ),
+  DetailsActuScreen.routeName: (context) => DetailsActuScreen(
+        actuality: null,
+      ),
   /*  DetailsScreen.routeName: (context) => DetailsScreen(productId: ''), */
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
@@ -45,6 +50,7 @@ final Map<String, WidgetBuilder> routes = {
   HistoriqueScreen.routeName: (context) => HistoriqueScreen(),
   GenerateQR.routeName: (context) => GenerateQR(),
   HomeTicketScreen.routeName: (context) => HomeTicketScreen(),
+  HomeActuScreen.routeName: (context) => HomeActuScreen(),
   DepotScreen.routeName: (context) => DepotScreen(),
   DepensesScreen.routeName: (context) => DepensesScreen(),
   FactureScreen.routeName: (context) => FactureScreen(),
